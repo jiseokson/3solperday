@@ -16,7 +16,7 @@ for (int i = 0; i < p.size(); ++i)
 ```
 왼쪽 끝에서부터 100이상이 되어 패스하는 작업물의 개수를 기록한 후 업데이트하기를 반복.
 
-# 01. 다리를 지나는 트럭 #
+# 03. 다리를 지나는 트럭 #
 -------------------
 문제출처: https://school.programmers.co.kr/learn/courses/30/lessons/42583?language=cpp
 
