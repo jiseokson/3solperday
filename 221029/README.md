@@ -8,7 +8,7 @@
 문제출처: https://school.programmers.co.kr/learn/courses/30/lessons/42586?language=cpp
 
 진행도의 원소들을 진행속도 원소들에 대응되는 대로 업데이트
-```
+``` C++
 for (int i = 0; i < p.size(); ++i)
     p[i] += s[i];
 ```
