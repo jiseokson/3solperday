@@ -52,3 +52,18 @@ todo:
 1. 부분문제 정의 똑바로 할 것
 2. 알아낸 사실이 있으면 일단 써놓고 볼 것.
 3. 문제 많이 풀어보기.
+
+## 02. 택배배달 ##
+문제출처: https://school.programmers.co.kr/learn/courses/30/lessons/131704?language=cpp  
+
+``` C++
+for (auto i = order.begin(); i != order.end(); ++i) {
+    while (b <= order.size() && (s.empty() || s.top() != *i))
+        s.push(b++);
+    if (s.top() == *i)
+        s.pop(), ++answer;
+    else
+        break;
+}
+```
+현재 주문이 스택의 top에 올 때까지 컨테이너에 있는 박스를 하나씩 push. top이 현재 주문과 같다면 다음 주문에 대한 작업으로 넘어가고 그렇지 않다면 종료.
