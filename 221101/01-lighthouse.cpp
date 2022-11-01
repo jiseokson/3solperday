@@ -18,17 +18,9 @@ void to_g(int n, vvi &l)
     }
 }
 
-int is_leaf(int p, int v)
-{
-    for (int w: g[v])
-        if (w != p)
-            return 0;
-    return 1;
-}
-
 int min_l(int p, int v, int on)
 {
-    if (is_leaf(p, v)) return on;
+    if (g[v].size() == 1 && g[v][0] == p) return on;
     int &ret = cache[v][on];
     if (ret != -1) return ret;
     ret = on;
