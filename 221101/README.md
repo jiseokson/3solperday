@@ -103,6 +103,19 @@ for (int i = 1; i < t.size(); ++i) {
 새로운 종류의 토핑이 추가될때마다 map에 저장함. 만약 현재 위치에 존재하는 토핑이 검색되지 않는다면 새로운 종류의 토핑이 발견된 것으로 간주함. 시간복잡도 O(nlog(n))으로 단축함.
 <br>
 
+다른 분 풀이:
+```C++
+map<int, int> l, r; // l[t] = cnt of t, r[t] = cnt of t
+for (int n: t) ++r[n];
+for (begin() <= i and i < end() - 1) {
+    ++l[*i], --r[*i];
+    if (r[*i] == 0) r.erase(*i);
+    if (l.size() == r.size()) ++answer
+}
+```
+map[key] = val: 존재하지 않는 key라면 기본값으로 val 생성
+<br>
+
 부족한 점: STL 자료구조 자연스럽게 활용하지 못함. 쉬운 방법으로 시간복잡도 줄일 수 있는데 안함.  
 todo:
 1. STL 기본 자료구조, 함수 등 사용법 숙지.
