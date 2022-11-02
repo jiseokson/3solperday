@@ -113,7 +113,7 @@ for (begin() <= i and i < end() - 1) {
     if (l.size() == r.size()) ++answer
 }
 ```
-map[key] = val: 존재하지 않는 key라면 기본값으로 val 생성
+map[key] = val: 존재하지 않는 key라면 val 생성. 존재하지 않는 key로 대입하지 않고 참조만 한다면 기본값으로 val생성.
 <br>
 
 부족한 점: STL 자료구조 자연스럽게 활용하지 못함. 쉬운 방법으로 시간복잡도 줄일 수 있는데 안함.  
