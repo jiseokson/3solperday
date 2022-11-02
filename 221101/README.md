@@ -55,7 +55,6 @@ todo:
 
 ## 02. 택배배달 ##
 문제출처: https://school.programmers.co.kr/learn/courses/30/lessons/131704?language=cpp  
-
 ``` C++
 for (auto i = order.begin(); i != order.end(); ++i) {
     while (b <= order.size() && (s.empty() || s.top() != *i))
@@ -67,3 +66,44 @@ for (auto i = order.begin(); i != order.end(); ++i) {
 }
 ```
 현재 주문이 스택의 top에 올 때까지 컨테이너에 있는 박스를 하나씩 push. top이 현재 주문과 같다면 다음 주문에 대한 작업으로 넘어가고 그렇지 않다면 종료.
+
+## 03. 롤케이크 ##
+문제출처: https://school.programmers.co.kr/learn/courses/30/lessons/132265  
+첫 번째 구현: 시간초과
+``` C++
+for (int i = 1; i < t.size(); ++i) {
+        lcnt.push_back(lcnt.back());
+        rcnt.push_front(rcnt.front());
+        if (find(t.begin(), t.begin() + i, t[i]) == t.begin() + i)
+            ++lcnt.back();
+        if (find(t.rbegin(), t.rbegin() + i, *(t.rbegin() + i)) == t.rbegin() + i)
+            ++rcnt.front();
+    }
+```
+lcnt[i]: t[0..i]에 존재하는 서로 다른 토핑의 종류  
+rcnt[i]: t[i..]에 존재하는 서로 다른 토핑의 종류  
+t의 크기가 1000000이므로 O(n^2)알고리즘으로도 충분히 동작할 것이라 예상하고 작성함.
+<br>
+
+두 번째 풀이: 통과
+``` C++
+for (int i = 1; i < t.size(); ++i) {
+    lcnt.push_back(lcnt.back());
+    rcnt.push_front(rcnt.front());
+    if (lt.find(t[i]) == lt.end()) {
+        ++lcnt.back();
+        lt.insert({t[i], 0});
+    }
+    if (rt.find(*(t.rbegin() + i)) == rt.end()) {
+        ++rcnt.front();
+        rt.insert({*(t.rbegin() + i), 0});
+    }
+}
+```
+새로운 종류의 토핑이 추가될때마다 map에 저장함. 만약 현재 위치에 존재하는 토핑이 검색되지 않는다면 새로운 종류의 토핑이 발견된 것으로 간주함. 시간복잡도 O(nlog(n))으로 단축함.
+<br>
+
+부족한 점: STL 자료구조 자연스럽게 활용하지 못함. 쉬운 방법으로 시간복잡도 줄일 수 있는데 안함.
+todo:
+1. STL 기본 자료구조, 함수 등 사용법 숙지.
+2. 시간복잡도 계산하는거 귀찮더라도 꼭 하기.
