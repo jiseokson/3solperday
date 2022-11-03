@@ -68,17 +68,17 @@ for (auto i = order.begin(); i != order.end(); ++i) {
 현재 주문이 스택의 top에 올 때까지 컨테이너에 있는 박스를 하나씩 push. top이 현재 주문과 같다면 다음 주문에 대한 작업으로 넘어가고 그렇지 않다면 종료.
 
 ## 03. 롤케이크 ##
-문제출처: https://school.programmers.co.kr/learn/courses/30/lessons/132265  
+문제출처: https://school.programmers.co.kr/learn/courses/30/lessons/132265   
 첫 번째 구현: 시간초과
 ``` C++
 for (int i = 1; i < t.size(); ++i) {
-        lcnt.push_back(lcnt.back());
-        rcnt.push_front(rcnt.front());
-        if (find(t.begin(), t.begin() + i, t[i]) == t.begin() + i)
-            ++lcnt.back();
-        if (find(t.rbegin(), t.rbegin() + i, *(t.rbegin() + i)) == t.rbegin() + i)
-            ++rcnt.front();
-    }
+    lcnt.push_back(lcnt.back());
+    rcnt.push_front(rcnt.front());
+    if (find(t.begin(), t.begin() + i, t[i]) == t.begin() + i)
+        ++lcnt.back();
+    if (find(t.rbegin(), t.rbegin() + i, *(t.rbegin() + i)) == t.rbegin() + i)
+        ++rcnt.front();
+}
 ```
 lcnt[i]: t[0..i]에 존재하는 서로 다른 토핑의 종류  
 rcnt[i]: t[i..]에 존재하는 서로 다른 토핑의 종류  
@@ -110,7 +110,7 @@ for (int n: t) ++r[n];
 for (begin() <= i and i < end() - 1) {
     ++l[*i], --r[*i];
     if (r[*i] == 0) r.erase(*i);
-    if (l.size() == r.size()) ++answer
+    if (l.size() == r.size()) ++answer;
 }
 ```
 map[key] = val: 존재하지 않는 key라면 val 생성. 존재하지 않는 key로 대입하지 않고 참조만 한다면 기본값으로 val생성.
