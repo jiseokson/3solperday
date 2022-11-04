@@ -18,7 +18,8 @@ int rs(int lo, int hi)
     else return ps[hi] - ps[lo - 1];
 }
 
-int solution(vector<int> e) {
+int solution(vector<int> e)
+{
     int answer = 0;
     ps = vi(e.size(), 0);
     ps[0] = e[0];

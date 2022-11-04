@@ -30,13 +30,13 @@ int cnt(int p, int v)
     return ret;
 }
 
-int solve(int p, int v)
+int min_diff(int p, int v)
 {
     if (g[v].size() == 1 && g[v][0] == p) return abs(cnt(-1, 1) - 2 * 1);
     int ret = abs(cnt(-1, 1) - 2 * cnt(p, v));
     for (int w: g[v]) {
         if (w == p) continue;
-        ret = min(ret, solve(v, w));
+        ret = min(ret, min_diff(v, w));
     }
     return ret;
 }
@@ -45,5 +45,5 @@ int solution(int n, vvi ws)
 {
     to_g(n, ws);
     cache = vi(n + 1, -1);
-    return solve(-1, 1);
+    return min_diff(-1, 1);
 }
