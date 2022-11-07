@@ -84,3 +84,23 @@ win[i][j][k] = win[i][j][k - 1] || (win[i][k][k - 1] && win[k][j][k - 1])
 k단계의 부분문제를 해결하는데 k - 1단계의 부분문제만 사용하므로 결과를 누적하는 반복적인 방식으로 구현할 수 있다. 이때 win[i][j]와 win[j][i]의 누적은 i를 이긴 선수의 수와 i가 이긴 경기의 수의 합과 같다. i를 이긴 선수의 수와 i가 이긴 경기의 수의 합이 n - 1이라면 i의 등수는 결정가능하다. 따라서 win[i][j]와 win[j][i]의 누적을 모든 선수에 대해서 조사해 순위를 결정할 수 있는 선수의 수를 셀 수 있다.
 <br>
 
+## 02. 모음 사전 ##
+문제출처: https://school.programmers.co.kr/learn/courses/30/lessons/84512
+<br>
+
+사전에 존재하는 모든 단어를 사전순으로 완전탐색하며 target을 찾을 경우 1을 반환함. target을 찾지 못했는데 길이가 5 이상인 경우는 더 이상 답을 찾지 못하므로 0을 반환하고 탐색 종료함.
+```C++
+int search(string str, int len)
+{
+    ++cnt;
+    if (str == target) return 1;
+    if (len == 5) return 0;
+    for (char c: {'A', 'E', 'I', 'O', 'U'}) // char c: "AEIOU"로 구현하면 \0도 c에 포함
+        if (search(str + c, len + 1))
+            return 1;
+    return 0;
+}
+```
+탐색을 시작할 때 search("", 0)형식으로 빈 문자열을 전달하는데, 빈 문자열도 cnt에 포함되므로 정답이 되는 값은 cnt - 1이다.
+<br>
+
